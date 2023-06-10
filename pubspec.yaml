@@ -1,0 +1,31 @@
+name: video_list
+description: A new Flutter project.
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.15.1 <3.0.0"
+
+dependencies:
+  cupertino_icons: any
+  global_configuration: any
+  flutter:
+    sdk: flutter
+  flutter_svg: any
+  http: any
+  device_preview: any
+  curved_navigation_bar: any
+  font_awesome_flutter: any
+  json_annotation: any
+  json_serializable: any
+  easy_search_bar: any
+  fl_chart: any
+  flutter_launcher_icons: any
+
+dev_dependencies:
+  flutter_lints: ^1.0.0
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
