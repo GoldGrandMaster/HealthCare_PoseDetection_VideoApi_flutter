@@ -42,59 +42,101 @@ class _VideoDetailScreenState extends State<VideoDetailScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
+    final height = MediaQuery.of(context).size.height;
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Post: Video_details'),
       ),
       body: Visibility(
         visible: isLoaded,
-        child: ListView.builder(
-          // itemCount: posts?.result.length,
-          itemCount: 1,
-          itemBuilder: (context, index) {
-            return Container(
-              padding: const EdgeInsets.all(16),
-              child: Row(
-                children: [
-                  Container(
-                    height: 50,
-                    width: 50,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(12),
-                      color: Colors.grey[300],
+        child: Container(
+          padding: const EdgeInsets.all(30),
+          child: Column(
+            children: [
+              SizedBox(width: 16),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'id: ' + posts!.result.data.actionInfo.id.toString(),
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
-                  ),
-                  SizedBox(width: 16),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          posts!.result.data.actionInfo.id.toString(),
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis,
-                          style: TextStyle(
-                            fontSize: 24,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        Text(
-                          posts!.result.data.actionInfo.title,
-                          maxLines: 3,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                        Text(
-                          posts!.result.data.actionInfo.actionId,
-                          maxLines: 3,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ],
+                    Text(
+                      'title: ' + posts!.result.data.actionInfo.title,
+                      maxLines: 3,
+                      overflow: TextOverflow.ellipsis,
                     ),
-                  ),
-                ],
+                    Text(
+                      'action_id: ' + posts!.result.data.actionInfo.actionId,
+                      maxLines: 3,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ],
+                ),
               ),
-            );
-          },
+              // SizedBox(width: 16),
+              Expanded(
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).pushNamed('/camera', arguments: 0);
+                    // Navigator.of(context).pushNamed('/video_detail',
+                    //             arguments: videoId);
+                  },
+                  child: Center(
+                    child: Container(
+                      height: 46,
+                      width: width - 340,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(24.0),
+                        gradient: LinearGradient(
+                          begin: Alignment(-1.0, 0),
+                          end: Alignment(1.0, 0),
+                          colors: [
+                            Theme.of(context).secondaryHeaderColor,
+                            Theme.of(context)
+                                .secondaryHeaderColor
+                                .withAlpha(155)
+                          ],
+                          stops: [0.0, 1.0],
+                        ),
+                        boxShadow: [
+                          BoxShadow(
+                            color:
+                                Theme.of(context).primaryColor.withOpacity(1),
+                            offset: Offset(0, 2),
+                            blurRadius: 4,
+                          ),
+                        ],
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text(
+                            'Play',
+                            style: TextStyle(
+                              fontFamily: 'Poppins',
+                              fontSize: 25,
+                              color: const Color(0xffffffff),
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
         replacement: const Center(
           child: CircularProgressIndicator(),

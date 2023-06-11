@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import '../models/video_list_post.dart';
 import '../services/remote_service_video_list.dart';
 
+var ID;
+
 class VideoListScreen extends StatefulWidget {
   const VideoListScreen({Key? key}) : super(key: key);
 
@@ -65,10 +67,10 @@ class _HomePageState extends State<VideoListScreen> {
                       Expanded(
                         child: GestureDetector(
                           onTap: () {
-                            int videoId = posts!.result[index].videoId;
-                            print("Pushing video detail with ID: $videoId");
-                            Navigator.of(context).pushNamed('/video_detail',
-                                arguments: posts!.result[index].videoId);
+                            ID = posts!.result[index].videoId;
+                            print("Pushing video detail with ID: $ID");
+                            Navigator.of(context)
+                                .pushNamed('/video_detail', arguments: ID);
                           },
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
