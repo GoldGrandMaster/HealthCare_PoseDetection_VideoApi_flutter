@@ -1,14 +1,13 @@
-import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import '/pages/login_screen.dart';
 import '/pages/splash_screen.dart';
 import '/pages/video_list_screen.dart';
 import '/pages/video_detail_screen.dart';
 import '/pages/camera_screen.dart';
+import 'pages/video_player_screen.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
-    // Getting arguments passed in while calling Navigator.pushNamed
     final args = settings.arguments;
 
     switch (settings.name) {
@@ -28,8 +27,25 @@ class RouteGenerator {
                 body: SafeArea(
                     child: Text(
                         'Error in video_detail route: args is not String'))));
-      case '/camera':
-        return MaterialPageRoute(builder: (_) => CameraScreen());
+      case '/Play':
+        return MaterialPageRoute(
+          builder: (_) => Scaffold(
+            body: Builder(
+              builder: (context) => Stack(
+                children: [
+                  VideoPlayerScreen(),
+                  Positioned(
+                    top: 0,
+                    right: 0,
+                    bottom: 0,
+                    left: MediaQuery.of(context).size.width * 0.5,
+                    child: CameraScreen(),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        );
       default:
         return MaterialPageRoute(
             builder: (_) =>

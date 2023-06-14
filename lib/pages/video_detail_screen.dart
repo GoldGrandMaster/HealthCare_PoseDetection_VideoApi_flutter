@@ -11,7 +11,6 @@ class VideoDetailScreen extends StatefulWidget {
 }
 
 class _VideoDetailScreenState extends State<VideoDetailScreen> {
-  // List<Post>? posts;
   Post? posts;
   var isLoaded = false;
   var videoId;
@@ -86,9 +85,7 @@ class _VideoDetailScreenState extends State<VideoDetailScreen> {
               Expanded(
                 child: GestureDetector(
                   onTap: () {
-                    Navigator.of(context).pushNamed('/camera', arguments: 0);
-                    // Navigator.of(context).pushNamed('/video_detail',
-                    //             arguments: videoId);
+                    Navigator.of(context).pushNamed('/Play', arguments: 0);
                   },
                   child: Center(
                     child: Container(

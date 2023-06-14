@@ -7,19 +7,19 @@ environment:
 
 dependencies:
   cupertino_icons: ^1.0.5
-  global_configuration: any
+  global_configuration: ^2.0.0-nullsafety.1
   flutter:
     sdk: flutter
-  flutter_svg: any
+  flutter_svg: ^2.0.7
   http: any
-  device_preview: any
-  curved_navigation_bar: any
-  font_awesome_flutter: any
-  json_annotation: any
-  json_serializable: any
-  easy_search_bar: any
-  fl_chart: any
-  flutter_launcher_icons: any
+  device_preview: ^1.1.0
+  curved_navigation_bar: ^1.0.3
+  font_awesome_flutter: ^10.4.0
+  json_annotation: ^4.8.1
+  json_serializable: ^6.7.0
+  easy_search_bar: ^2.5.0
+  fl_chart: ^0.63.0
+  flutter_launcher_icons: ^0.13.1
   get: ^4.6.5
   image_picker: ^0.8.8
   google_mlkit_commons: ^0.2.0
@@ -28,6 +28,8 @@ dependencies:
   google_mlkit_pose_detection: ^0.4.0
   camera: any
   percent_indicator: ^4.2.3
+  video_player: ^2.6.1
+  chewie: ^1.5.0
 
 dev_dependencies:
   flutter_lints: ^1.0.0

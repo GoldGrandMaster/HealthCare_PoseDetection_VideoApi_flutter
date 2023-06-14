@@ -1,8 +1,7 @@
-// File: camera_app.dart
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 import 'package:get/get.dart';
-
+// import 'package:flutter/services.dart';
 import '../helpers/home_setup.dart';
 
 List<CameraDescription> cameras = [];
@@ -16,6 +15,10 @@ class _CameraAppState extends State<CameraScreen> {
   @override
   void initState() {
     super.initState();
+    // SystemChrome.setPreferredOrientations([
+    //   DeviceOrientation.landscapeLeft,
+    //   DeviceOrientation.landscapeRight,
+    // ]);
     initApp();
   }
 

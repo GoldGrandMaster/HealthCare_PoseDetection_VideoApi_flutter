@@ -12,7 +12,6 @@ class VideoListScreen extends StatefulWidget {
 }
 
 class _HomePageState extends State<VideoListScreen> {
-  // List<Post>? posts;
   Post? posts;
   var isLoaded = false;
 
@@ -105,54 +104,6 @@ class _HomePageState extends State<VideoListScreen> {
               child: CircularProgressIndicator(),
             ),
           ),
-          // SizedBox(
-          //   height: 160,
-          // ),
-          // GestureDetector(
-          //   onTap: () {
-          //     Navigator.of(context).pushNamed('/video_detail', arguments: 0);
-          //   },
-          //   child: Center(
-          //     child: Container(
-          //       height: 46,
-          //       width: width - 80,
-          //       decoration: BoxDecoration(
-          //         borderRadius: BorderRadius.circular(24.0),
-          //         gradient: LinearGradient(
-          //           begin: Alignment(-1.0, 0),
-          //           end: Alignment(1.0, 0),
-          //           colors: [
-          //             Theme.of(context).secondaryHeaderColor,
-          //             Theme.of(context).secondaryHeaderColor.withAlpha(155)
-          //           ],
-          //           stops: [0.0, 1.0],
-          //         ),
-          //         boxShadow: [
-          //           BoxShadow(
-          //             color: Theme.of(context).primaryColor.withOpacity(1),
-          //             offset: Offset(0, 2),
-          //             blurRadius: 4,
-          //           ),
-          //         ],
-          //       ),
-          //       child: Row(
-          //         mainAxisAlignment: MainAxisAlignment.center,
-          //         crossAxisAlignment: CrossAxisAlignment.center,
-          //         children: [
-          //           Text(
-          //             'video_detail',
-          //             style: TextStyle(
-          //               fontFamily: 'Poppins',
-          //               fontSize: 25,
-          //               color: const Color(0xffffffff),
-          //             ),
-          //             textAlign: TextAlign.center,
-          //           ),
-          //         ],
-          //       ),
-          //     ),
-          //   ),
-          // ),
         ],
       ),
     );
