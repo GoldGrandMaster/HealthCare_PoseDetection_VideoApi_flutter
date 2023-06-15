@@ -4,6 +4,7 @@ import '/pages/splash_screen.dart';
 import '/pages/video_list_screen.dart';
 import '/pages/video_detail_screen.dart';
 import '/pages/camera_screen.dart';
+import 'components/home_view.dart';
 import 'pages/video_player_screen.dart';
 
 class RouteGenerator {
@@ -28,24 +29,24 @@ class RouteGenerator {
                     child: Text(
                         'Error in video_detail route: args is not String'))));
       case '/Play':
-        return MaterialPageRoute(
-          builder: (_) => Scaffold(
-            body: Builder(
-              builder: (context) => Stack(
-                children: [
-                  VideoPlayerScreen(),
-                  Positioned(
-                    top: 0,
-                    right: 0,
-                    bottom: 0,
-                    left: MediaQuery.of(context).size.width * 0.5,
-                    child: CameraScreen(),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        );
+        // return MaterialPageRoute(builder: (_) => CameraScreen());
+        return MaterialPageRoute(builder: (_) => VideoPlayerScreen());
+      // return MaterialPageRoute(
+      //   builder: (_) => Scaffold(
+      //     body: Builder(
+      //       builder: (context) => Row(
+      //         children: [
+      //           Expanded(
+      //             child: CameraScreen(),
+      //           ),
+      //           Expanded(
+      //             child: VideoPlayerScreen(),
+      //           ),
+      //         ],
+      //       ),
+      //     ),
+      //   ),
+      // );
       default:
         return MaterialPageRoute(
             builder: (_) =>
