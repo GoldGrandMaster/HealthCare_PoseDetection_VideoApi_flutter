@@ -30,23 +30,23 @@ class RouteGenerator {
                         'Error in video_detail route: args is not String'))));
       case '/Play':
         // return MaterialPageRoute(builder: (_) => CameraScreen());
-        return MaterialPageRoute(builder: (_) => VideoPlayerScreen());
-      // return MaterialPageRoute(
-      //   builder: (_) => Scaffold(
-      //     body: Builder(
-      //       builder: (context) => Row(
-      //         children: [
-      //           Expanded(
-      //             child: CameraScreen(),
-      //           ),
-      //           Expanded(
-      //             child: VideoPlayerScreen(),
-      //           ),
-      //         ],
-      //       ),
-      //     ),
-      //   ),
-      // );
+        // return MaterialPageRoute(builder: (_) => VideoPlayerScreen());
+        return MaterialPageRoute(
+          builder: (_) => Scaffold(
+            body: Builder(
+              builder: (context) => Row(
+                children: [
+                  Expanded(
+                    child: CameraScreen(),
+                  ),
+                  Expanded(
+                    child: VideoPlayerScreen(),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        );
       default:
         return MaterialPageRoute(
             builder: (_) =>
