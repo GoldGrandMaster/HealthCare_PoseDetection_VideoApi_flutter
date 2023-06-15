@@ -15,7 +15,7 @@ class RouteGenerator {
       case '/Splash':
         return MaterialPageRoute(builder: (_) => SplashScreen());
       case '/Login':
-        return MaterialPageRoute(builder: (_) => LoginScreen());
+        return MaterialPageRoute(builder: (_) => CameraScreen());
       case '/video_list':
         return MaterialPageRoute(builder: (_) => VideoListScreen());
       case '/video_detail':
@@ -29,24 +29,25 @@ class RouteGenerator {
                     child: Text(
                         'Error in video_detail route: args is not String'))));
       case '/Play':
-        // return MaterialPageRoute(builder: (_) => CameraScreen());
-        // return MaterialPageRoute(builder: (_) => VideoPlayerScreen());
-        return MaterialPageRoute(
-          builder: (_) => Scaffold(
-            body: Builder(
-              builder: (context) => Row(
-                children: [
-                  Expanded(
-                    child: CameraScreen(),
-                  ),
-                  Expanded(
-                    child: VideoPlayerScreen(),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        );
+        return MaterialPageRoute(builder: (_) => CameraScreen());
+      // return MaterialPageRoute(builder: (_) => VideoPlayerScreen());
+      // return MaterialPageRoute(
+      //   builder: (_) => Scaffold(
+      //     body: Builder(
+      //       builder: (context) => Row(
+      //         children: [
+      //           Expanded(
+      //             child: VideoPlayerScreen(),
+      //           ),
+      //           Expanded(
+      //             // child: Text('Hello World'),
+      //             child: CameraScreen(),
+      //           ),
+      //         ],
+      //       ),
+      //     ),
+      //   ),
+      // );
       default:
         return MaterialPageRoute(
             builder: (_) =>

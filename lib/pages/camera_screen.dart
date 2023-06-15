@@ -28,6 +28,10 @@ class _CameraAppState extends State<CameraScreen> {
     runApp(
       GetMaterialApp(
         title: "Application",
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+        ),
         initialRoute: HomeSetup.initialRoute,
         getPages: HomeSetup.routes,
       ),
