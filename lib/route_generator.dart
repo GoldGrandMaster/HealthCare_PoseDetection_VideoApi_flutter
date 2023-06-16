@@ -37,11 +37,11 @@ class RouteGenerator {
       //       builder: (context) => Row(
       //         children: [
       //           Expanded(
-      //             child: VideoPlayerScreen(),
+      //             child: CameraScreen(),
       //           ),
       //           Expanded(
-      //             // child: Text('Hello World'),
-      //             child: CameraScreen(),
+      //             // child: Text('Hello World, Lets GO!'),
+      //             child: VideoPlayerScreen(),
       //           ),
       //         ],
       //       ),

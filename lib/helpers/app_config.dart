@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../repository/settings_repository.dart' as settingRepo;
 
 class App {

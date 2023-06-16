@@ -76,11 +76,20 @@ class PosePainter extends CustomPainter {
     double top = 1.0 * ((size.height / 3).toInt());
     double right = left + 10;
     double bottom = 2 * top;
-    // Draw the background bar
-    canvas.drawRect(
+    // // Draw the background bar
+    // Define the border radius for the rounded corners
+    final borderRadius = BorderRadius.circular(10.0);
+
+    // Create a rounded rectangle from the provided rect and border radius
+    final roundedRect = RRect.fromRectAndCorners(
       Rect.fromLTRB(left, top, right, bottom),
-      backgroundPaint,
+      topLeft: borderRadius.topLeft,
+      topRight: borderRadius.topRight,
+      bottomLeft: borderRadius.bottomLeft,
+      bottomRight: borderRadius.bottomRight,
     );
+
+    canvas.drawRRect(roundedRect, backgroundPaint);
 
     // // Draw the progress bar based on the given percent
     // canvas.drawRect(
@@ -139,7 +148,7 @@ class PosePainter extends CustomPainter {
         text: str,
         style: TextStyle(
           color: Colors.white,
-          fontSize: 25,
+          fontSize: 18,
         ),
       );
       final notificationText = TextPainter(
@@ -149,7 +158,7 @@ class PosePainter extends CustomPainter {
       );
       notificationText.layout();
 
-      final notificationPosition = Offset(250 - (notificationText.width * 0.5),
+      final notificationPosition = Offset(120 - (notificationText.width * 0.5),
           50 - (notificationText.height * 0.5));
       notificationText.paint(canvas, notificationPosition);
     }
@@ -294,42 +303,42 @@ class PosePainter extends CustomPainter {
         paintLine(jointRightHeel, jointRightFootIndex, rightPaint);
         paintLine(jointRightAnkle, jointRightFootIndex, rightPaint);
 
-        //Display angle of joints
-        final angleJoints = TextSpan(
-          text: '${angleShow(jointLeftElbow, jointLeftWrist, jointLeftIndex).toInt()}°(L_Wr)\n' +
-              '${angleShow(jointRightElbow, jointRightWrist, jointRightIndex).toInt()}°(R_Wr)\n' +
-              '${angleShow(jointLeftShoulder, jointLeftHip, jointLeftKnee).toInt()}°(L_Hp L_Kn)\n' +
-              '${angleShow(jointRightShoulder, jointRightHip, jointRightKnee).toInt()}°(R_Hp R_Kn)\n' +
-              '${angleShow(jointLeftShoulder, jointLeftHip, jointLeftAnkle).toInt()}°(L_Hp L_Ak)\n' +
-              '${angleShow(jointRightShoulder, jointRightHip, jointRightAnkle).toInt()}°(R_Hp R_Ak)\n' +
-              '${angleShow(jointLeftAnkle, jointLeftKnee, jointLeftHip).toInt()}°(L_Kn)\n' +
-              '${angleShow(jointRightAnkle, jointRightKnee, jointRightHip).toInt()}°(R_Kn)\n' +
-              '${angleShow(jointLeftKnee, jointLeftAnkle, jointLeftFootIndex).toInt()}°(L_Ft)\n' +
-              '${angleShow(jointRightKnee, jointRightAnkle, jointRightFootIndex).toInt()}°(R_Ft)\n' +
-              '${angleShow(jointLeftShoulder, jointLeftElbow, jointLeftWrist).toInt()}°(L_Eb)\n' +
-              '${angleShow(jointRightShoulder, jointRightElbow, jointRightWrist).toInt()}°(R_Eb)\n' +
-              '${angleShow(jointLeftHip, jointLeftShoulder, jointLeftWrist).toInt()}°(L_Sh L_Wr)\n' +
-              '${angleShow(jointRightHip, jointRightShoulder, jointRightWrist).toInt()}°(R_Sh R_Wr)\n' +
-              '${angleShow(jointLeftHip, jointLeftShoulder, jointLeftElbow).toInt()}°(L_Sh L_Eb)\n' +
-              '${angleShow(jointRightHip, jointRightShoulder, jointRightElbow).toInt()}°(R_Sh R_Eb)\n',
-          style: TextStyle(
-            color: Colors.cyanAccent,
-            fontSize: 18,
-          ),
-        );
+        // //Display angle of joints
+        // final angleJoints = TextSpan(
+        //   text: '${angleShow(jointLeftElbow, jointLeftWrist, jointLeftIndex).toInt()}°(L_Wr)\n' +
+        //       '${angleShow(jointRightElbow, jointRightWrist, jointRightIndex).toInt()}°(R_Wr)\n' +
+        //       '${angleShow(jointLeftShoulder, jointLeftHip, jointLeftKnee).toInt()}°(L_Hp L_Kn)\n' +
+        //       '${angleShow(jointRightShoulder, jointRightHip, jointRightKnee).toInt()}°(R_Hp R_Kn)\n' +
+        //       '${angleShow(jointLeftShoulder, jointLeftHip, jointLeftAnkle).toInt()}°(L_Hp L_Ak)\n' +
+        //       '${angleShow(jointRightShoulder, jointRightHip, jointRightAnkle).toInt()}°(R_Hp R_Ak)\n' +
+        //       '${angleShow(jointLeftAnkle, jointLeftKnee, jointLeftHip).toInt()}°(L_Kn)\n' +
+        //       '${angleShow(jointRightAnkle, jointRightKnee, jointRightHip).toInt()}°(R_Kn)\n' +
+        //       '${angleShow(jointLeftKnee, jointLeftAnkle, jointLeftFootIndex).toInt()}°(L_Ft)\n' +
+        //       '${angleShow(jointRightKnee, jointRightAnkle, jointRightFootIndex).toInt()}°(R_Ft)\n' +
+        //       '${angleShow(jointLeftShoulder, jointLeftElbow, jointLeftWrist).toInt()}°(L_Eb)\n' +
+        //       '${angleShow(jointRightShoulder, jointRightElbow, jointRightWrist).toInt()}°(R_Eb)\n' +
+        //       '${angleShow(jointLeftHip, jointLeftShoulder, jointLeftWrist).toInt()}°(L_Sh L_Wr)\n' +
+        //       '${angleShow(jointRightHip, jointRightShoulder, jointRightWrist).toInt()}°(R_Sh R_Wr)\n' +
+        //       '${angleShow(jointLeftHip, jointLeftShoulder, jointLeftElbow).toInt()}°(L_Sh L_Eb)\n' +
+        //       '${angleShow(jointRightHip, jointRightShoulder, jointRightElbow).toInt()}°(R_Sh R_Eb)\n',
+        //   style: TextStyle(
+        //     color: Colors.cyanAccent,
+        //     fontSize: 18,
+        //   ),
+        // );
 
-        final angleJointsText = TextPainter(
-          text: angleJoints,
-          textAlign: TextAlign.right,
-          textDirection: TextDirection.ltr,
-        );
+        // final angleJointsText = TextPainter(
+        //   text: angleJoints,
+        //   textAlign: TextAlign.right,
+        //   textDirection: TextDirection.ltr,
+        // );
 
-        angleJointsText.layout();
+        // angleJointsText.layout();
 
-        // Draw the text centered around the point (x, y) for instance
-        final angleJointsPosition = Offset(380 - (angleJointsText.width * 0.5),
-            400 - (angleJointsText.height * 0.5));
-        angleJointsText.paint(canvas, angleJointsPosition);
+        // // Draw the text centered around the point (x, y) for instance
+        // final angleJointsPosition = Offset(380 - (angleJointsText.width * 0.5),
+        //     400 - (angleJointsText.height * 0.5));
+        // angleJointsText.paint(canvas, angleJointsPosition);
       }
 
       //Points of pose
@@ -417,11 +426,22 @@ class PosePainter extends CustomPainter {
       progress_percent = calculatePercentage();
 
       // Draw the progress bar based on the given percent
-      canvas.drawRect(
-        Rect.fromLTRB(
-            left, bottom, right, bottom - (bottom - top) * progress_percent),
-        progressPaint,
+      final rect = Rect.fromLTRB(
+        left,
+        bottom,
+        right,
+        bottom - (bottom - top) * progress_percent,
       );
+
+      final rrect = RRect.fromRectAndCorners(
+        rect,
+        topLeft: borderRadius.topLeft,
+        topRight: borderRadius.topRight,
+        bottomLeft: borderRadius.bottomLeft,
+        bottomRight: borderRadius.bottomRight,
+      );
+
+      canvas.drawRRect(rrect, progressPaint);
 
       //timer start
       // print(ss);
@@ -457,7 +477,7 @@ class PosePainter extends CustomPainter {
       //       'LeftMouth:${floorWithFixedDecimal(jointLeftMouth.likelihood, 4)}\n' +
       //       'RightMouth:${floorWithFixedDecimal(jointRightMouth.likelihood, 4)}\n' +
       //       'LeftShoulder:${floorWithFixedDecimal(jointLeftShoulder.likelihood, 4)}\n' +
-      //       'RightShoulder:${floor WithFixedDecimal(jointRightShoulder.likelihood, 4)}\n' +
+      //       'RightShoulder:${floorWithFixedDecimal(jointRightShoulder.likelihood, 4)}\n' +
       //       'LeftElbow:${floorWithFixedDecimal(jointLeftElbow.likelihood, 4)}\n' +
       //       'RightElbow:${floorWithFixedDecimal(jointRightElbow.likelihood, 4)}\n' +
       //       'LeftWrist:${floorWithFixedDecimal(jointLeftWrist.likelihood, 4)}\n' +

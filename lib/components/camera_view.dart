@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'package:camera/camera.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -10,14 +9,14 @@ class CameraView extends StatefulWidget {
     Key? key,
     required this.title,
     required this.customPaint,
-    this.text,
+    // this.text,
     required this.onImage,
     this.initialDirection = CameraLensDirection.back,
   }) : super(key: key);
 
   final String title;
   final CustomPaint? customPaint;
-  final String? text;
+  // final String? text;
   final Function(InputImage inputImage) onImage;
   final CameraLensDirection initialDirection;
 
@@ -76,6 +75,28 @@ class _CameraViewState extends State<CameraView> {
           if (widget.customPaint != null) widget.customPaint!,
         ],
       ),
+      // child: Stack(
+      //   fit: StackFit.expand,
+      //   children: <Widget>[
+      //     Align(
+      //       alignment: Alignment.centerRight,
+      //       child: ClipRRect(
+      //         borderRadius: BorderRadius.all(Radius.circular(20)),
+      //         child: Container(
+      //           width: 220,
+      //           height: 500,
+      //           decoration: BoxDecoration(
+      //             border: Border.all(width: 10, color: Colors.green),
+      //           ),
+      //           // margin: EdgeInsets.only(bottom: 30),
+      //           child: CameraPreview(_controller!),
+      //           // child: Square(),
+      //         ),
+      //       ),
+      //     ),
+      //     if (widget.customPaint != null) widget.customPaint!,
+      //   ],
+      // ),
     );
   }
 

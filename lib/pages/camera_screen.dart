@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 import 'package:get/get.dart';
-// import 'package:flutter/services.dart';
 import '../helpers/home_setup.dart';
+import 'package:chewie/chewie.dart';
+import 'package:video_player/video_player.dart';
 
 List<CameraDescription> cameras = [];
+
+late ChewieController chewieController;
 
 class CameraScreen extends StatefulWidget {
   @override
@@ -12,13 +15,18 @@ class CameraScreen extends StatefulWidget {
 }
 
 class _CameraAppState extends State<CameraScreen> {
+  final videoPlayerController = VideoPlayerController.network(
+      'https://video.bodybt.com/a077f3f3ee9b4331b26e6a92c20e1535/8080108b9878caa51250b0567d4bc14b-sd.m3u8');
+
   @override
   void initState() {
     super.initState();
-    // SystemChrome.setPreferredOrientations([
-    //   DeviceOrientation.landscapeLeft,
-    //   DeviceOrientation.landscapeRight,
-    // ]);
+    chewieController = ChewieController(
+      videoPlayerController: videoPlayerController,
+      aspectRatio: 9 / 16,
+      autoPlay: false,
+      looping: false,
+    );
     initApp();
   }
 
