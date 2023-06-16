@@ -31,7 +31,7 @@ void getData() async {
     print(message);
     print(notif_test13);
   } else {
-    print('API request failed');
+    print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~API request failed');
   }
 }
 
@@ -354,12 +354,12 @@ class PosePainter extends CustomPainter {
       print(
           '---------------------------------------------------------------------');
       print(angleGt);
-      angleGt = 100;
-      start_angle = 30;
-      end_angle = 90;
-      varience = 5;
-      notif_test13 = 'elbows to high';
-      fail_time = 5;
+      // angleGt = 100;
+      // start_angle = 30;
+      // end_angle = 90;
+      // varience = 5;
+      // notif_test13 = 'elbows to high';
+      // fail_time = 5;
 
       //Count of repetitions ,only push down/up exercises - test13
       // int leftElbowAngle =
@@ -383,8 +383,8 @@ class PosePainter extends CustomPainter {
       int ttt = (ss >= tp ? (ss - tp) : (ss + 60.0 - tp)).toInt();
 
       if (prv == 1 && cur == -1) {
-        print('current_time-----------------------------------');
-        print(ttt);
+        // print('current_time-----------------------------------');
+        // print(ttt);
         if (ttt <= fail_time) {
           cnt++;
           tp = ss;
@@ -399,6 +399,7 @@ class PosePainter extends CustomPainter {
       if (ttt > fail_time) {
         String str = 'too slow';
         notification_alarm(str);
+        if (cur == -1) tp = ss;
       }
 
       final repetition = TextSpan(
