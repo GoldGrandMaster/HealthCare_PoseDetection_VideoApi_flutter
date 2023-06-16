@@ -15,7 +15,7 @@ class RouteGenerator {
       case '/Splash':
         return MaterialPageRoute(builder: (_) => SplashScreen());
       case '/Login':
-        return MaterialPageRoute(builder: (_) => CameraScreen());
+        return MaterialPageRoute(builder: (_) => LoginScreen());
       case '/video_list':
         return MaterialPageRoute(builder: (_) => VideoListScreen());
       case '/video_detail':

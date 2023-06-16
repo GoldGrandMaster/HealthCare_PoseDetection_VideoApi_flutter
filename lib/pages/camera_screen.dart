@@ -20,7 +20,6 @@ class _CameraAppState extends State<CameraScreen> {
 
   @override
   void initState() {
-    super.initState();
     chewieController = ChewieController(
       videoPlayerController: videoPlayerController,
       aspectRatio: 9 / 16,
@@ -28,6 +27,7 @@ class _CameraAppState extends State<CameraScreen> {
       looping: false,
     );
     initApp();
+    super.initState();
   }
 
   Future<void> initApp() async {
@@ -37,7 +37,7 @@ class _CameraAppState extends State<CameraScreen> {
       GetMaterialApp(
         title: "Application",
         theme: ThemeData(
-          primarySwatch: Colors.blue,
+          primarySwatch: Colors.green,
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
         initialRoute: HomeSetup.initialRoute,

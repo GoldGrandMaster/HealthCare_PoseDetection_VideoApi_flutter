@@ -16,8 +16,8 @@ class HomeView extends GetView<HomeController> {
     return Container(
       padding: const EdgeInsets.all(16),
       // margin: EdgeInsets.only(bottom: 20, right: 10, top: 20),
-      height: MediaQuery.of(context).size.height,
-      width: MediaQuery.of(context).size.width,
+      // height: MediaQuery.of(context).size.height,
+      // width: MediaQuery.of(context).size.width,
       child: Row(
         children: [
           Expanded(
