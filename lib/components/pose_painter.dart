@@ -1,39 +1,39 @@
 import 'package:flutter/material.dart';
 import 'package:google_mlkit_pose_detection/google_mlkit_pose_detection.dart';
-import '../models/action_info_post.dart';
-import '../pages/video_list_screen.dart';
-import '../services/remote_service_action_info.dart';
-import 'coordinate_translator.dart';
-import 'dart:math';
 import 'package:vector_math/vector_math.dart' as vector;
+import 'dart:math';
 import 'dart:core';
+import 'coordinate_translator.dart';
+import 'package:healthcare/models/action_info_post.dart';
+import 'package:healthcare/services/remote_service_action_info.dart';
+import 'package:healthcare/services/remote_service_video_set.dart';
 
-int cnt = 0, counter = 0;
+int cnt = 0;
 int prv = -1, cur = -1;
-double tp = 0, ss = 0;
-PostDetail? posts;
-var code, message;
-int start_angle = 0, end_angle = 0, varience = 0, fail_time = 0, angleGt = 0;
-String notif_test13 = '';
+double prv_Time = 0, cur_Time = 0;
+double stepCurTime = 0, stepPrvTime = 0;
 
-void getData() async {
-  posts = await RemoteService_detail().getPostsdetail(ID);
-  start_angle = int.parse(posts?.result.data.stage1[0].angle1 ?? '');
-  end_angle = int.parse(posts?.result.data.stage1[0].angle2 ?? '');
-  varience = int.parse(posts?.result.data.stage1[0].variance ?? '');
-  fail_time = int.parse(posts?.result.data.stage1[0].failTime ?? '');
-  angleGt = int.parse(posts?.result.data.stage1[0].angleGt ?? '');
-  notif_test13 = posts?.result.data.stage1[0].angleGtMsg ?? '';
-  if (posts != null) {
-    code = posts?.code;
-    message = posts?.msg;
-    print("|||||||||||||||||||||||||||||API|||||||||||||||||||||||||||||");
-    print(message);
-    print(notif_test13);
-  } else {
-    print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~API request failed');
-  }
-}
+PostDetail? posts;
+bool flag = false;
+
+// void getData() async {
+//   posts = await RemoteService_detail().getPostsdetail(ID);
+//   start_angle = int.parse(posts?.result.data.stage1[0].angle1 ?? '');
+//   end_angle = int.parse(posts?.result.data.stage1[0].angle2 ?? '');
+//   varience = int.parse(posts?.result.data.stage1[0].variance ?? '');
+//   fail_time = int.parse(posts?.result.data.stage1[0].failTime ?? '');
+//   angleGt = int.parse(posts?.result.data.stage1[0].angleGt ?? '');
+//   notif_test13 = posts?.result.data.stage1[0].angleGtMsg ?? '';
+//   if (posts != null) {
+//     code = posts?.code;
+//     message = posts?.msg;
+//     print("|||||||||||||||||||||||||||||API|||||||||||||||||||||||||||||");
+//     print(message);
+//     print(notif_test13);
+//   } else {
+//     print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~API request failed');
+//   }
+// }
 
 class PosePainter extends CustomPainter {
   PosePainter(this.poses, this.absoluteImageSize, this.rotation);
@@ -56,10 +56,9 @@ class PosePainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    // rest_api data
-    getData();
-    // print(message);
-    // print("~~~~~~~~~~~~~~~~~~~~#Painter#~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+    // print("~~~~~~~~~~~~~~~~#Painter:Video_Start_End_Time#~~~~~~~~~~~~~~");
+    // print(video_start_Time);
+    // print(video_end_Time);
 
     //progress_bar
     double progress_percent;
@@ -141,7 +140,12 @@ class PosePainter extends CustomPainter {
     }
 
     DateTime currentTime = DateTime.now();
-    ss = currentTime.second + currentTime.millisecond / 1000.0;
+    cur_Time = currentTime.second + currentTime.millisecond / 1000.0;
+    stepCurTime = currentTime.second + currentTime.millisecond / 1000.0;
+    if (!flag) {
+      flag = true;
+      prv_Time = cur_Time;
+    }
 
     void notification_alarm(String str) {
       final notification = TextSpan(
@@ -351,55 +355,50 @@ class PosePainter extends CustomPainter {
             1,
             paint);
       });
-      print(
-          '---------------------------------------------------------------------');
-      print(angleGt);
-      // angleGt = 100;
-      // start_angle = 30;
-      // end_angle = 90;
-      // varience = 5;
-      // notif_test13 = 'elbows to high';
-      // fail_time = 5;
 
       //Count of repetitions ,only push down/up exercises - test13
       // int leftElbowAngle =
       //     angleShow(jointLeftShoulder, jointLeftElbow, jointLeftWrist).toInt();
-      int rightAngle =
-          angleShow(jointRightHip, jointRightShoulder, jointRightWrist).toInt();
-      // int downLimit = 140, upLimit = 40;
-      if (rightAngle > angleGt) {
-        notification_alarm(notif_test13);
+      int curAngle =
+          angleShow(jointRightShoulder, jointRightElbow, jointRightWrist)
+              .toInt();
+      if (curAngle > angleGt) {
+        notification_alarm(angleGtMsg);
       }
-      if (rightAngle >= start_angle - varience &&
-          rightAngle <= start_angle + varience) {
+      // print('*********************************************');
+      // print(start_angle);
+      // print(end_angle);
+      if (curAngle >= start_angle - varience &&
+          curAngle <= start_angle + varience) {
         cur = -1;
         // notification_alarm('down');
       }
-      if (rightAngle >= end_angle - varience &&
-          rightAngle <= end_angle + varience) {
+      if (curAngle >= end_angle - varience &&
+          curAngle <= end_angle + varience) {
         cur = 1;
         // notification_alarm('up');
       }
-      int ttt = (ss >= tp ? (ss - tp) : (ss + 60.0 - tp)).toInt();
+      // print('******************current_time is:\n');
+      // print(cur_Time);
+      if (cur_Time < prv_Time) cur_Time += 60;
+      double time_Calcul = cur_Time - prv_Time;
+      if (time_Calcul > video_end_Time) notification_alarm('Time Over');
+      int ttt = (stepCurTime >= stepPrvTime
+              ? (stepCurTime - stepPrvTime)
+              : (stepCurTime + 60.0 - stepPrvTime))
+          .toInt();
 
       if (prv == 1 && cur == -1) {
-        // print('current_time-----------------------------------');
-        // print(ttt);
         if (ttt <= fail_time) {
-          cnt++;
-          tp = ss;
-          print(
-              "----------------------------------------$cnt--count changes!!!");
-        } /* else {
-          String str = 'too slow';
-          notification_alarm(str);
-          tp = ss;
-        }*/
+          if (time_Calcul > video_start_Time) cnt++;
+          stepPrvTime = stepCurTime;
+          // print(
+          //     "----------------------------------------$cnt--count changes!!!");
+        }
       }
       if (ttt > fail_time) {
-        String str = 'too slow';
-        notification_alarm(str);
-        if (cur == -1) tp = ss;
+        notification_alarm(failMsg);
+        if (cur == -1) stepPrvTime = stepCurTime;
       }
 
       final repetition = TextSpan(
@@ -420,8 +419,20 @@ class PosePainter extends CustomPainter {
       prv = cur;
 
       double calculatePercentage() {
-        double res = (min(1.0 * angleGt, rightAngle) / 10.0).toInt() / 10.0;
-        return res;
+        double res = 0;
+        if (start_angle > end_angle) {
+          if (curAngle >= start_angle) res = 0;
+          if (curAngle <= end_angle) res = 1.0;
+          if (curAngle < start_angle && curAngle > end_angle)
+            res = (start_angle - curAngle) / (start_angle - end_angle);
+        } else {
+          if (curAngle <= start_angle) res = 0;
+          if (curAngle >= end_angle) res = 1.0;
+          if (curAngle > start_angle && curAngle < end_angle)
+            res = (curAngle - start_angle) / (end_angle - start_angle);
+        }
+        // double res = (min(1.0 * angleGt, curAngle) / 10.0).toInt() / 10.0;
+        return (res * 10).toInt() / 10.0;
       }
 
       progress_percent = calculatePercentage();
@@ -447,7 +458,7 @@ class PosePainter extends CustomPainter {
       //timer start
       // print(ss);
       final timeElapsed = TextSpan(
-        text: '${(ss >= tp ? (ss - tp) : (ss + 60.0 - tp)).toStringAsFixed(1)}',
+        text: '${time_Calcul.toStringAsFixed(1)}',
         // text: '$currentTime',
         style: TextStyle(color: Color.fromARGB(255, 5, 1, 255), fontSize: 15),
       );

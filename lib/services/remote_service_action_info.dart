@@ -2,6 +2,11 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import '../models/action_info_post.dart';
 
+int start_angle = 0, end_angle = 0;
+int varience = 0, fail_time = 0;
+int angleGt = 0;
+String angleGtMsg = '', failMsg = '';
+
 class RemoteService_detail {
   Future<PostDetail?> getPostsdetail(var actionID) async {
     var client = http.Client();
@@ -15,6 +20,13 @@ class RemoteService_detail {
           '------------------------success_post_api_detail---------------------------');
       var str = response.body;
       PostDetail res = postFromJson(str);
+      start_angle = int.parse(res.result.data.stage2[0].angle1);
+      end_angle = int.parse(res.result.data.stage2[0].angle2);
+      varience = int.parse(res.result.data.stage2[0].variance);
+      fail_time = int.parse(res.result.data.stage2[0].failTime);
+      angleGt = int.parse(res.result.data.stage2[0].angleGt);
+      angleGtMsg = res.result.data.stage2[0].angleGtMsg;
+
       return res;
     } else {
       print(

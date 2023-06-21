@@ -3,7 +3,7 @@ import '../models/video_list_post.dart';
 import '../services/remote_service_video_list.dart';
 
 var ID;
-var linkurl;
+var video_linkurl;
 
 class VideoListScreen extends StatefulWidget {
   const VideoListScreen({Key? key}) : super(key: key);
@@ -69,8 +69,8 @@ class _HomePageState extends State<VideoListScreen> {
                           onTap: () {
                             ID = posts!.result[index].videoId;
                             print("Pushing video detail with ID: $ID");
-                            linkurl = posts!.result[index].linkurl;
-                            print('video_URL: ' + linkurl);
+                            video_linkurl = posts!.result[index].linkurl;
+                            print('video_URL: ' + video_linkurl);
                             Navigator.of(context)
                                 .pushNamed('/video_detail', arguments: ID);
                           },

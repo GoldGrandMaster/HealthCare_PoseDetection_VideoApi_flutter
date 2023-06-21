@@ -9,7 +9,7 @@ import 'video_list_screen.dart';
 
 List<CameraDescription> cameras = [];
 
-late ChewieController chewieController;
+// late ChewieController chewieController;
 
 class CameraScreen extends StatefulWidget {
   @override
@@ -17,18 +17,16 @@ class CameraScreen extends StatefulWidget {
 }
 
 class _CameraAppState extends State<CameraScreen> {
-  final videoPlayerController = VideoPlayerController.network(linkurl);
-  // final videoPlayerController = VideoPlayerController.network(
-  //     'https://video.bodybt.com/a077f3f3ee9b4331b26e6a92c20e1535/8080108b9878caa51250b0567d4bc14b-sd.m3u8');
+  // final videoPlayerController = VideoPlayerController.network(video_linkurl);
 
   @override
   void initState() {
-    chewieController = ChewieController(
-      videoPlayerController: videoPlayerController,
-      aspectRatio: 9 / 16,
-      autoPlay: true,
-      looping: false,
-    );
+    // chewieController = ChewieController(
+    //   videoPlayerController: videoPlayerController,
+    //   aspectRatio: 9 / 16,
+    //   autoPlay: true,
+    //   looping: false,
+    // );
     initApp();
     super.initState();
   }
