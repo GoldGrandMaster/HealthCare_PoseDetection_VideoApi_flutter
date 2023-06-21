@@ -29,6 +29,9 @@ class HomeView extends GetView<HomeController> {
     initState();
 
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Action: Let\'s go!'),
+      ),
       body: Center(
         child: Container(
           padding: const EdgeInsets.all(8),
