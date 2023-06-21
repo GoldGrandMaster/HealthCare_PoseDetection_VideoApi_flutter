@@ -13,7 +13,7 @@ class VideoListScreen extends StatefulWidget {
 }
 
 class _HomePageState extends State<VideoListScreen> {
-  Post? posts;
+  PostList? posts;
   var isLoaded = false;
 
   @override
@@ -25,7 +25,7 @@ class _HomePageState extends State<VideoListScreen> {
   }
 
   getData() async {
-    posts = await RemoteService().getPosts();
+    posts = await RemoteService_list().getPostslist();
     if (posts != null) {
       setState(() {
         isLoaded = true;
@@ -70,7 +70,7 @@ class _HomePageState extends State<VideoListScreen> {
                             ID = posts!.result[index].videoId;
                             print("Pushing video detail with ID: $ID");
                             linkurl = posts!.result[index].linkurl;
-                            print(linkurl);
+                            print('video_URL: ' + linkurl);
                             Navigator.of(context)
                                 .pushNamed('/video_detail', arguments: ID);
                           },

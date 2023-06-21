@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
-import '../models/video_detail_post.dart';
-import '../services/remote_service_video_detail.dart';
+import '../models/action_info_post.dart';
+import '../models/video_set_post.dart';
+import '../services/remote_service_action_info.dart';
+import '../services/remote_service_video_set.dart';
 
-class VideoDetailScreen extends StatefulWidget {
+class ActionInfoScreen extends StatefulWidget {
   final int videoId;
 
-  const VideoDetailScreen({Key? key, required this.videoId}) : super(key: key);
+  const ActionInfoScreen({Key? key, required this.videoId}) : super(key: key);
   @override
-  _VideoDetailScreenState createState() => _VideoDetailScreenState();
+  _ActionInfoScreenState createState() => _ActionInfoScreenState();
 }
 
-class _VideoDetailScreenState extends State<VideoDetailScreen> {
-  Post? posts;
+class _ActionInfoScreenState extends State<ActionInfoScreen> {
+  PostDetail? posts;
+  PostSet? pposts;
   var isLoaded = false;
   var videoId;
 
@@ -30,9 +33,11 @@ class _VideoDetailScreenState extends State<VideoDetailScreen> {
     print('Fetching Data...');
     print("Video ID: $videoId");
 
-    posts = await RemoteService().getPosts(videoId);
+    pposts = await RemoteService_set().getPostsSet(videoId);
+    int action_id = pposts!.result[0].actionId;
+    posts = await RemoteService_detail().getPostsdetail(action_id);
 
-    if (posts != null) {
+    if (posts != null && pposts != null) {
       setState(() {
         isLoaded = true;
       });
@@ -60,7 +65,7 @@ class _VideoDetailScreenState extends State<VideoDetailScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'id: ' + posts!.result.data.actionInfo.id.toString(),
+                      'Video_id: ' + videoId.toString(),
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
@@ -69,15 +74,56 @@ class _VideoDetailScreenState extends State<VideoDetailScreen> {
                       ),
                     ),
                     Text(
-                      'title: ' + posts!.result.data.actionInfo.title,
-                      maxLines: 3,
-                      overflow: TextOverflow.ellipsis,
+                        '**********************video_set************************'),
+                    Text(
+                      // 'start_time: ' + pposts!.result[0].startTime,
+                      'start_time: ' +
+                          (pposts != null && pposts!.result.isNotEmpty
+                              ? pposts!.result[0].startTime
+                              : 'N/A'),
                     ),
                     Text(
-                      'action_id: ' + posts!.result.data.actionInfo.actionId,
-                      maxLines: 3,
-                      overflow: TextOverflow.ellipsis,
+                      'end_time: ' +
+                          (pposts != null && pposts!.result.isNotEmpty
+                              ? pposts!.result[0].endTime
+                              : 'N/A'),
                     ),
+                    Text(
+                      'action_id: ' +
+                          (pposts != null && pposts!.result.isNotEmpty
+                              ? pposts!.result[0].actionId.toString()
+                              : 'N/A'),
+                    ),
+                    Text(
+                      'id: ' +
+                          (pposts != null && pposts!.result.isNotEmpty
+                              ? pposts!.result[0].id.toString()
+                              : 'N/A'),
+                    ),
+                    Text(
+                      'title: ' +
+                          (pposts != null && pposts!.result.isNotEmpty
+                              ? pposts!.result[0].title
+                              : 'N/A'),
+                    ),
+                    Text(
+                        '\n**********************action_info**********************'),
+                    Text(
+                      'id: ${posts != null ? posts!.result.data.actionInfo.id.toString() : 'N/A'}',
+                    ),
+                    Text(
+                      'title: ${posts != null ? posts!.result.data.actionInfo.title : 'N/A'}',
+                    ),
+                    Text(
+                      'Stage1: angle1: ${posts != null && posts!.result.data.stage1.isNotEmpty ? posts!.result.data.stage1[0].angle1 : 'N/A'} angle2: ${posts != null && posts!.result.data.stage1.isNotEmpty ? posts!.result.data.stage1[0].angle2 : 'N/A'}',
+                    ),
+                    Text(
+                      'Stage2: angle1: ${posts != null && posts!.result.data.stage2.isNotEmpty ? posts!.result.data.stage2[0].angle1 : 'N/A'} angle2: ${posts != null && posts!.result.data.stage2.isNotEmpty ? posts!.result.data.stage2[0].angle2 : 'N/A'}',
+                    ),
+                    // Text('t_title: ' + posts!.result.data.actionInfo.tTitle),
+                    // Text(
+                    //   'action_id: ' + posts!.result.data.actionInfo.actionId,
+                    // ),
                   ],
                 ),
               ),

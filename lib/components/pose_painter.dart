@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_mlkit_pose_detection/google_mlkit_pose_detection.dart';
-import '../models/video_detail_post.dart';
+import '../models/action_info_post.dart';
 import '../pages/video_list_screen.dart';
-import '../services/remote_service_video_detail.dart';
+import '../services/remote_service_action_info.dart';
 import 'coordinate_translator.dart';
 import 'dart:math';
 import 'package:vector_math/vector_math.dart' as vector;
@@ -11,13 +11,13 @@ import 'dart:core';
 int cnt = 0, counter = 0;
 int prv = -1, cur = -1;
 double tp = 0, ss = 0;
-Post? posts;
+PostDetail? posts;
 var code, message;
 int start_angle = 0, end_angle = 0, varience = 0, fail_time = 0, angleGt = 0;
 String notif_test13 = '';
 
 void getData() async {
-  posts = await RemoteService().getPosts(ID);
+  posts = await RemoteService_detail().getPostsdetail(ID);
   start_angle = int.parse(posts?.result.data.stage1[0].angle1 ?? '');
   end_angle = int.parse(posts?.result.data.stage1[0].angle2 ?? '');
   varience = int.parse(posts?.result.data.stage1[0].variance ?? '');

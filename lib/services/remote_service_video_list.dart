@@ -2,9 +2,8 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import '../models/video_list_post.dart';
 
-class RemoteService {
-  // Future<List<Post>?> getPosts() async {
-  Future<Post?> getPosts() async {
+class RemoteService_list {
+  Future<PostList?> getPostslist() async {
     var client = http.Client();
 
     var uri =
@@ -15,7 +14,7 @@ class RemoteService {
       print(
           '------------------------success_post_api_list---------------------------');
       var str = response.body;
-      Post res = postFromJson(str);
+      PostList res = postFromJson(str);
       return res;
     } else {
       print(

@@ -53,7 +53,11 @@ class _CameraViewState extends State<CameraView> {
   }
 
   Widget _liveFeedBody() {
-    if (_controller?.value.isInitialized == false) {
+    // if (_controller?.value.isInitialized == false) {
+    //   return Container();
+    // }
+
+    if (_controller == null || !_controller!.value.isInitialized) {
       return Container();
     }
 

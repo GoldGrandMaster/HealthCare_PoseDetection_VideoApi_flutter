@@ -1,14 +1,11 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import '../models/video_detail_post.dart';
+import '../models/action_info_post.dart';
 
-class RemoteService {
-  // Future<List<Post>?> getPosts() async {
-  Future<Post?> getPosts(var videoID) async {
+class RemoteService_detail {
+  Future<PostDetail?> getPostsdetail(var actionID) async {
     var client = http.Client();
-    var s = videoID.toString();
-    print('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-    print('******************************${videoID}');
+    var s = actionID.toString();
     var uri = Uri.parse(
         'http://mirror.ccjjj.com/xcxapi/teacher/action_info?uid=777&action_id=$s');
     var response = await client.post(uri);
@@ -17,9 +14,7 @@ class RemoteService {
       print(
           '------------------------success_post_api_detail---------------------------');
       var str = response.body;
-      Post res = postFromJson(str);
-      int start_angle = int.parse(res.result.data.stage1[0].angle1);
-      print('***************************${start_angle}');
+      PostDetail res = postFromJson(str);
       return res;
     } else {
       print(

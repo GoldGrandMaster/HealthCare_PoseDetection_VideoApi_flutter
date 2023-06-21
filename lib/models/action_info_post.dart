@@ -4,22 +4,22 @@
 
 import 'dart:convert';
 
-Post postFromJson(String str) => Post.fromJson(json.decode(str));
+PostDetail postFromJson(String str) => PostDetail.fromJson(json.decode(str));
 
-String postToJson(Post data) => json.encode(data.toJson());
+String postToJson(PostDetail data) => json.encode(data.toJson());
 
-class Post {
+class PostDetail {
   int code;
   String msg;
   Result result;
 
-  Post({
+  PostDetail({
     required this.code,
     required this.msg,
     required this.result,
   });
 
-  factory Post.fromJson(Map<String, dynamic> json) => Post(
+  factory PostDetail.fromJson(Map<String, dynamic> json) => PostDetail(
         code: json["code"],
         msg: json["msg"],
         result: Result.fromJson(json["result"]),

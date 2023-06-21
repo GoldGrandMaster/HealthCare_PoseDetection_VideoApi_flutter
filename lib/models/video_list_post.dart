@@ -4,26 +4,26 @@
 
 import 'dart:convert';
 
-Post postFromJson(String str) => Post.fromJson(json.decode(str));
+PostList postFromJson(String str) => PostList.fromJson(json.decode(str));
 
-String postToJson(Post data) => json.encode(data.toJson());
+String postToJson(PostList data) => json.encode(data.toJson());
 
-class Post {
+class PostList {
   int code;
   String msg;
   List<Result> result;
 
-  Post({
+  PostList({
     required this.code,
     required this.msg,
     required this.result,
   });
 
-  factory Post.fromJson(Map<String, dynamic> json) {
+  factory PostList.fromJson(Map<String, dynamic> json) {
     // print('!!!!!!!!!!!!!!!!!!!!!!!!!!!api!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
     // var rlt = json["result"];
     // print(rlt);
-    return Post(
+    return PostList(
       code: json["code"],
       msg: json["msg"],
       result: List<Result>.from(json["result"].map((x) => Result.fromJson(x))),
