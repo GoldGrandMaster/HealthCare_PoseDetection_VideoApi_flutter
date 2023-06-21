@@ -11,10 +11,12 @@ class RemoteService_list {
     var response = await client.post(uri);
 
     if (response.statusCode == 200) {
-      print(
-          '------------------------success_post_api_list---------------------------');
       var str = response.body;
       PostList res = postFromJson(str);
+
+      print(
+          '------------------------success_post_api_list---------------------------');
+
       return res;
     } else {
       print(

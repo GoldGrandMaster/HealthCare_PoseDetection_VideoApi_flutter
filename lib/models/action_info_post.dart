@@ -39,9 +39,11 @@ class Result {
     required this.data,
   });
 
-  factory Result.fromJson(Map<String, dynamic> json) => Result(
-        data: Data.fromJson(json["data"]),
-      );
+  factory Result.fromJson(Map<String, dynamic> json) {
+    return Result(
+      data: Data.fromJson(json["data"]),
+    );
+  }
 
   Map<String, dynamic> toJson() => {
         "data": data.toJson(),
@@ -67,15 +69,17 @@ class Data {
     required this.other,
   });
 
-  factory Data.fromJson(Map<String, dynamic> json) => Data(
-        actionInfo: ActionInfo.fromJson(json["action_info"]),
-        actionId: json["action_id"],
-        name: json["name"],
-        type: json["type"],
-        stage1: List<Stage>.from(json["stage1"].map((x) => Stage.fromJson(x))),
-        stage2: List<Stage>.from(json["stage2"].map((x) => Stage.fromJson(x))),
-        other: Other.fromJson(json["other"]),
-      );
+  factory Data.fromJson(Map<String, dynamic> json) {
+    return Data(
+      actionInfo: ActionInfo.fromJson(json["action_info"]),
+      actionId: json["action_id"],
+      name: json["name"],
+      type: json["type"],
+      stage1: List<Stage>.from(json["stage1"].map((x) => Stage.fromJson(x))),
+      stage2: List<Stage>.from(json["stage2"].map((x) => Stage.fromJson(x))),
+      other: Other.fromJson(json["other"]),
+    );
+  }
 
   Map<String, dynamic> toJson() => {
         "action_info": actionInfo.toJson(),

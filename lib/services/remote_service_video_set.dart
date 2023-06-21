@@ -18,8 +18,6 @@ class RemoteService_set {
     var response = await client.post(uri);
 
     if (response.statusCode == 200) {
-      print(
-          '------------------------success_post_api_video_set---------------------------');
       var str = response.body;
       PostSet res = postFromJson(str);
 
@@ -33,6 +31,9 @@ class RemoteService_set {
       timeParts = endTime.split(':');
       video_end_Time =
           Int(timeParts[0]) * 3600 + Int(timeParts[1]) * 60 + Int(timeParts[2]);
+
+      print(
+          '------------------------success_post_api_video_set---------------------------');
 
       return res;
     } else {

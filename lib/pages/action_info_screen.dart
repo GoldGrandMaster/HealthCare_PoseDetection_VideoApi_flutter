@@ -36,7 +36,6 @@ class _ActionInfoScreenState extends State<ActionInfoScreen> {
     pposts = await RemoteService_set().getPostsSet(videoId);
     int action_id = pposts!.result[0].actionId;
     posts = await RemoteService_detail().getPostsdetail(action_id);
-
     if (posts != null && pposts != null) {
       setState(() {
         isLoaded = true;

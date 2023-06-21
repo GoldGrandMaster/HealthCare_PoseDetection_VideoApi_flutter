@@ -16,16 +16,21 @@ class RemoteService_detail {
     var response = await client.post(uri);
 
     if (response.statusCode == 200) {
-      print(
-          '------------------------success_post_api_detail---------------------------');
       var str = response.body;
       PostDetail res = postFromJson(str);
       start_angle = int.parse(res.result.data.stage2[0].angle1);
       end_angle = int.parse(res.result.data.stage2[0].angle2);
       varience = int.parse(res.result.data.stage2[0].variance);
       fail_time = int.parse(res.result.data.stage2[0].failTime);
-      angleGt = int.parse(res.result.data.stage2[0].angleGt);
+      try {
+        angleGt = int.parse(res.result.data.stage2[0].angleGt);
+      } catch (e) {
+        angleGt = 0;
+      }
       angleGtMsg = res.result.data.stage2[0].angleGtMsg;
+
+      print(
+          '------------------------success_post_api_detail---------------------------');
 
       return res;
     } else {
