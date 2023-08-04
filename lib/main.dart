@@ -7,11 +7,11 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   GlobalConfiguration().loadFromAsset("configurations");
 
-  // await CameraService.instance.initCameras();
-  runApp(
-    DevicePreview(
-      enabled: false,
-      builder: (_) => App(),
-    ),
-  );
+  // // await CameraService.instance.initCameras();
+  // runApp(
+  //   DevicePreview(
+  //     enabled: false,
+  //     builder: (_) => App(),
+  //   ),
+  // );
 }
