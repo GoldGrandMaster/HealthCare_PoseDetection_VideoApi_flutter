@@ -11,16 +11,16 @@ class Setting {
 
   Setting();
 
-  Setting.fromJSON(Map<String, dynamic> jsonMap) {
-    try {
-      appName = jsonMap['app_name'] ?? null;
-      gender = jsonMap['gender'] ?? 'Male';
-      mainColor.value = jsonMap['main_color'] ?? 0;
-      mobileLanguage.value = Locale(jsonMap['mobile_language'] ?? "en", '');
-    } catch (e) {
-      //print(CustomTrace(StackTrace.current, message: e));
-    }
-  }
+  // Setting.fromJSON(Map<String, dynamic> jsonMap) {
+  //   try {
+  //     appName = jsonMap['app_name'] ?? null;
+  //     gender = jsonMap['gender'] ?? 'Male';
+  //     mainColor.value = jsonMap['main_color'] ?? 0;
+  //     mobileLanguage.value = Locale(jsonMap['mobile_language'] ?? "en", '');
+  //   } catch (e) {
+  //     //print(CustomTrace(StackTrace.current, message: e));
+  //   }
+  // }
 
   // ValueNotifier<Locale> initMobileLanguage(String defaultLanguage) {
   //   SharedPreferences.getInstance().then((prefs) {
