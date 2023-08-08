@@ -4,8 +4,8 @@ import '/pages/splash_screen.dart';
 import '/pages/video_list_screen.dart';
 import 'pages/action_info_screen.dart';
 import '/pages/camera_screen.dart';
-import 'components/home_view.dart';
-import 'pages/video_player_screen.dart';
+// import 'components/home_view.dart';
+// import 'pages/video_player_screen.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
