@@ -3,7 +3,7 @@ import 'route_generator.dart';
 
 import 'models/setting.dart';
 import 'repository/settings_repository.dart' as settingRepo;
-import 'helpers/app_config.dart' as config;
+// import 'helpers/app_config.dart' as config;
 
 class App extends StatefulWidget {
   @override
