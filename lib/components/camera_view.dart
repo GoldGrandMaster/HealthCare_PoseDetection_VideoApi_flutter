@@ -156,12 +156,12 @@ class _CameraViewState extends State<CameraView> {
       },
     ).toList();
 
-    final inputImageData = InputImageData(
-      size: imageSize,
-      imageRotation: imageRotation,
-      inputImageFormat: inputImageFormat,
-      planeData: planeData,
-    );
+    // final inputImageData = InputImageData(
+    //   size: imageSize,
+    //   imageRotation: imageRotation,
+    //   inputImageFormat: inputImageFormat,
+    //   planeData: planeData,
+    // );
 
     final inputImage =
         InputImage.fromBytes(bytes: bytes, inputImageData: inputImageData);
