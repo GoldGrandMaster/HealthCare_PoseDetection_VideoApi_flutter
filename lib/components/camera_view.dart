@@ -104,7 +104,57 @@ class _CameraViewState extends State<CameraView> {
     );
   }
 
-  
+  Future _startLiveFeed() async {
+    var cameras = await availableCameras();
+    final camera = cameras[_cameraIndex.toInt()];
+    _controller = CameraController(
+      camera,
+      ResolutionPreset.high,
+      enableAudio: false,
+    );
+    _controller?.initialize().then((_) {
+      if (!mounted) {
+        return;
+      }
+      _controller?.startImageStream(_processCameraImage);
+      setState(() {});
+    });
+  }
+
+  Future _stopLiveFeed() async {
+    await _controller?.stopImageStream();
+    await _controller?.dispose();
+    _controller = null;
+  }
+
+  Future _processCameraImage(CameraImage image) async {
+    final WriteBuffer allBytes = WriteBuffer();
+    for (final Plane plane in image.planes) {
+      allBytes.putUint8List(plane.bytes);
+    }
+    final bytes = allBytes.done().buffer.asUint8List();
+
+    final Size imageSize =
+        Size(image.width.toDouble(), image.height.toDouble());
+
+    final camera = cameras[_cameraIndex.toInt()];
+    final imageRotation =
+        InputImageRotationValue.fromRawValue(camera.sensorOrientation);
+    if (imageRotation == null) return;
+
+    final inputImageFormat =
+        InputImageFormatValue.fromRawValue(image.format.raw);
+    if (inputImageFormat == null) return;
+
+    final planeData = image.planes.map(
+      (Plane plane) {
+        return InputImagePlaneMetadata(
+          bytesPerRow: plane.bytesPerRow,
+          height: plane.height,
+          width: plane.width,
+        );
+      },
+    ).toList();
 
     final inputImageData = InputImageData(
       size: imageSize,
