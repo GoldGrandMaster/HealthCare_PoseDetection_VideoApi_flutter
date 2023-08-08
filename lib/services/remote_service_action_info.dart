@@ -2,11 +2,6 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import '../models/action_info_post.dart';
 
-int start_angle = 0, end_angle = 0;
-int varience = 0, fail_time = 0;
-int angleGt = 0;
-String angleGtMsg = '', failMsg = '';
-
 class RemoteService_detail {
   Future<PostDetail?> getPostsdetail(var actionID) async {
     var client = http.Client();
