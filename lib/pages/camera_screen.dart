@@ -21,12 +21,12 @@ class _CameraAppState extends State<CameraScreen> {
 
   @override
   void initState() {
-    chewieController = ChewieController(
-      videoPlayerController: videoPlayerController,
-      aspectRatio: 9 / 16,
-      autoPlay: true,
-      looping: false,
-    );
+    // chewieController = ChewieController(
+    //   videoPlayerController: videoPlayerController,
+    //   aspectRatio: 9 / 16,
+    //   autoPlay: true,
+    //   looping: false,
+    // );
     initApp();
     super.initState();
   }
