@@ -107,27 +107,27 @@ class Result {
     );
   }
 
-  // Map<String, dynamic> toJson() => {
-  //       "video_id": videoId,
-  //       "title": title,
-  //       "t_title": tTitle,
-  //       "summary": summary,
-  //       "t_summary": tSummary,
-  //       "linkurl": linkurl,
-  //       "en_linkurl": enLinkurl,
-  //       "thumb": thumb,
-  //       "en_thumb": enThumb,
-  //       "time": time,
-  //       "lvl": lvl,
-  //       "teacher_name": teacherNameValues.reverse[teacherName],
-  //       "teacher_t_name": teacherNameValues.reverse[teacherTName],
-  //       "teacher_en_name": teacherEnNameValues.reverse[teacherEnName],
-  //       "device": device,
-  //       "show_power": showPower,
-  //       "teacher": teacher,
-  //       "image": image,
-  //       "en_image": enImage,
-  //     };
+  Map<String, dynamic> toJson() => {
+        "video_id": videoId,
+        "title": title,
+        "t_title": tTitle,
+        "summary": summary,
+        "t_summary": tSummary,
+        "linkurl": linkurl,
+        "en_linkurl": enLinkurl,
+        "thumb": thumb,
+        "en_thumb": enThumb,
+        "time": time,
+        "lvl": lvl,
+        "teacher_name": teacherNameValues.reverse[teacherName],
+        "teacher_t_name": teacherNameValues.reverse[teacherTName],
+        "teacher_en_name": teacherEnNameValues.reverse[teacherEnName],
+        "device": device,
+        "show_power": showPower,
+        "teacher": teacher,
+        "image": image,
+        "en_image": enImage,
+      };
 }
 
 enum TeacherEnName { HULK }
