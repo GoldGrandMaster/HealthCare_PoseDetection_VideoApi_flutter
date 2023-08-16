@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 import 'package:get/get.dart';
 import '../helpers/home_setup.dart';
-// import 'package:chewie/chewie.dart';
-// import 'package:video_player/video_player.dart';
+import 'package:chewie/chewie.dart';
+import 'package:video_player/video_player.dart';
 
-// import 'video_list_screen.dart';
+import 'video_list_screen.dart';
 
 List<CameraDescription> cameras = [];
 
