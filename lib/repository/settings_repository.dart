@@ -15,31 +15,31 @@ import '../models/setting.dart';
 ValueNotifier<Setting> setting = new ValueNotifier(new Setting());
 final navigatorKey = GlobalKey<NavigatorState>();
 
-// Future<Setting> initSettings() async {
-//   Setting _setting;
-//   try {
-//     SharedPreferences prefs = await SharedPreferences.getInstance();
+Future<Setting> initSettings() async {
+  Setting _setting;
+  try {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
 
-//     _setting = Setting.fromJSON({});
-//     if (prefs.containsKey('language')) {
-//       // _setting.mobileLanguage.value = Locale(prefs.get('language'), '');
-//     }
-//     print(prefs.get('themeColor'));
-//     if (prefs.containsKey('themeColor')) {
-//       // _setting.mainColor.value = prefs.get('themeColor');
-//     } else {
-//       _setting.mainColor.value = 0;
-//     }
+    _setting = Setting.fromJSON({});
+    if (prefs.containsKey('language')) {
+      // _setting.mobileLanguage.value = Locale(prefs.get('language'), '');
+    }
+    print(prefs.get('themeColor'));
+    if (prefs.containsKey('themeColor')) {
+      // _setting.mainColor.value = prefs.get('themeColor');
+    } else {
+      _setting.mainColor.value = 0;
+    }
 
-//     setting.value = _setting;
+    setting.value = _setting;
 
-//     setting.notifyListeners();
-//   } catch (e) {
-//     print(e);
-//   }
+    setting.notifyListeners();
+  } catch (e) {
+    print(e);
+  }
 
-//   return setting.value;
-// }
+  return setting.value;
+}
 
 void setBrightness(Brightness brightness) async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
