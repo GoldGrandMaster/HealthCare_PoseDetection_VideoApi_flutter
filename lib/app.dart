@@ -78,7 +78,7 @@ class _AppState extends State<App> {
             //   GlobalWidgetsLocalizations.delegate,
             // ],
             // supportedLocales: S.delegate.supportedLocales,
-            debugShowCheckedModeBanner: false,
+            debugShowCheckedModeBanner: true,
           );
         });
   }
