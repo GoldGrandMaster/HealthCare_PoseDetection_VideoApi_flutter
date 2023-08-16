@@ -64,40 +64,40 @@ class _HomePageState extends State<VideoListScreen> {
                         ),
                       ),
                       SizedBox(width: 16),
-                      Expanded(
-                        child: GestureDetector(
-                          onTap: () {
-                            ID = posts!.result[index].videoId;
-                            print("Pushing video detail with ID: $ID");
-                            video_linkurl = posts!.result[index].linkurl;
-                            print('video_URL: ' + video_linkurl);
-                            Navigator.of(context)
-                                .pushNamed('/video_detail', arguments: ID);
-                          },
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                // posts![index].code.toString(),
-                                "Video_Id: " +
-                                    posts!.result[index].videoId.toString(),
-                                maxLines: 2,
-                                overflow: TextOverflow.ellipsis,
-                                style: TextStyle(
-                                  fontSize: 24,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              Text(
-                                // posts![index].msg ?? '',
-                                "Titile: " + posts!.result[index].title,
-                                maxLines: 3,
-                                overflow: TextOverflow.ellipsis,
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
+                      // Expanded(
+                      //   child: GestureDetector(
+                      //     onTap: () {
+                      //       ID = posts!.result[index].videoId;
+                      //       print("Pushing video detail with ID: $ID");
+                      //       video_linkurl = posts!.result[index].linkurl;
+                      //       print('video_URL: ' + video_linkurl);
+                      //       Navigator.of(context)
+                      //           .pushNamed('/video_detail', arguments: ID);
+                      //     },
+                      //     child: Column(
+                      //       crossAxisAlignment: CrossAxisAlignment.start,
+                      //       children: [
+                      //         Text(
+                      //           // posts![index].code.toString(),
+                      //           "Video_Id: " +
+                      //               posts!.result[index].videoId.toString(),
+                      //           maxLines: 2,
+                      //           overflow: TextOverflow.ellipsis,
+                      //           style: TextStyle(
+                      //             fontSize: 24,
+                      //             fontWeight: FontWeight.bold,
+                      //           ),
+                      //         ),
+                      //         Text(
+                      //           // posts![index].msg ?? '',
+                      //           "Titile: " + posts!.result[index].title,
+                      //           maxLines: 3,
+                      //           overflow: TextOverflow.ellipsis,
+                      //         ),
+                      //       ],
+                      //     ),
+                      //   ),
+                      // ),
                     ],
                   ),
                 );
