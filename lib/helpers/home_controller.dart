@@ -6,21 +6,21 @@ import '../components/pose_painter.dart';
 class HomeController extends GetxController {
   final PoseDetector _poseDetector =
       PoseDetector(options: PoseDetectorOptions());
-  bool _canProcess = true;
-  bool _isBusy = false;
+  // bool _canProcess = true;
+  // bool _isBusy = false;
   CustomPaint? customPaint;
   String? text;
   //TODO: Implement HomeController
 
-  // @override
-  // void onInit() {
-  //   super.onInit();
-  // }
+  @override
+  void onInit() {
+    super.onInit();
+  }
 
-  // @override
-  // void onReady() {
-  //   super.onReady();
-  // }
+  @override
+  void onReady() {
+    super.onReady();
+  }
 
   @override
   void onClose() {
