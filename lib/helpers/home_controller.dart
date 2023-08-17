@@ -6,8 +6,8 @@ import '../components/pose_painter.dart';
 class HomeController extends GetxController {
   final PoseDetector _poseDetector =
       PoseDetector(options: PoseDetectorOptions());
-  // bool _canProcess = true;
-  // bool _isBusy = false;
+  bool _canProcess = true;
+  bool _isBusy = false;
   CustomPaint? customPaint;
   String? text;
   //TODO: Implement HomeController
