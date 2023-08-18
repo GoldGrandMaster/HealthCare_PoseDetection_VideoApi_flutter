@@ -19,17 +19,17 @@ class PostDetail {
     required this.result,
   });
 
-  // factory PostDetail.fromJson(Map<String, dynamic> json) => PostDetail(
-  //       code: json["code"],
-  //       msg: json["msg"],
-  //       result: Result.fromJson(json["result"]),
-  //     );
+  factory PostDetail.fromJson(Map<String, dynamic> json) => PostDetail(
+        code: json["code"],
+        msg: json["msg"],
+        result: Result.fromJson(json["result"]),
+      );
 
-  // Map<String, dynamic> toJson() => {
-  //       "code": code,
-  //       "msg": msg,
-  //       "result": result.toJson(),
-  //     };
+  Map<String, dynamic> toJson() => {
+        "code": code,
+        "msg": msg,
+        "result": result.toJson(),
+      };
 }
 
 class Result {
