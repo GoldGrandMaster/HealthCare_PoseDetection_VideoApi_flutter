@@ -25,9 +25,9 @@ class App {
         _width - (_queryData.padding.left + _queryData.padding.right) / 100.0;
   }
 
-  // double appHeight(double v) {
-  //   return _height * v;
-  // }
+  double appHeight(double v) {
+    return _height * v;
+  }
 
   double appWidth(double v) {
     return _width * v;
