@@ -8,34 +8,34 @@ PostList postFromJson(String str) => PostList.fromJson(json.decode(str));
 
 String postToJson(PostList data) => json.encode(data.toJson());
 
-// class PostList {
-//   int code;
-//   String msg;
-//   List<Result> result;
+class PostList {
+  int code;
+  String msg;
+  List<Result> result;
 
-//   PostList({
-//     required this.code,
-//     required this.msg,
-//     required this.result,
-//   });
+  PostList({
+    required this.code,
+    required this.msg,
+    required this.result,
+  });
 
-//   factory PostList.fromJson(Map<String, dynamic> json) {
-//     // print('!!!!!!!!!!!!!!!!!!!!!!!!!!!api!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-//     // var rlt = json["result"];
-//     // print(rlt);
-//     return PostList(
-//       code: json["code"],
-//       msg: json["msg"],
-//       result: List<Result>.from(json["result"].map((x) => Result.fromJson(x))),
-//     );
-//   }
+  factory PostList.fromJson(Map<String, dynamic> json) {
+    // print('!!!!!!!!!!!!!!!!!!!!!!!!!!!api!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
+    // var rlt = json["result"];
+    // print(rlt);
+    return PostList(
+      code: json["code"],
+      msg: json["msg"],
+      result: List<Result>.from(json["result"].map((x) => Result.fromJson(x))),
+    );
+  }
 
-//   Map<String, dynamic> toJson() => {
-//         "code": code,
-//         "msg": msg,
-//         "result": List<dynamic>.from(result.map((x) => x.toJson())),
-//       };
-// }
+  Map<String, dynamic> toJson() => {
+        "code": code,
+        "msg": msg,
+        "result": List<dynamic>.from(result.map((x) => x.toJson())),
+      };
+}
 
 class Result {
   int videoId;
