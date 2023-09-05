@@ -40,13 +40,13 @@ class Result {
   int id;
   String title;
 
-  // Result({
-  //   required this.startTime,
-  //   required this.endTime,
-  //   required this.actionId,
-  //   required this.id,
-  //   required this.title,
-  // });
+  Result({
+    required this.startTime,
+    required this.endTime,
+    required this.actionId,
+    required this.id,
+    required this.title,
+  });
 
   factory Result.fromJson(Map<String, dynamic> json) => Result(
         startTime: json["start_time"],
