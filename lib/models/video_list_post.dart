@@ -8,34 +8,34 @@ PostList postFromJson(String str) => PostList.fromJson(json.decode(str));
 
 String postToJson(PostList data) => json.encode(data.toJson());
 
-class PostList {
-  int code;
-  String msg;
-  List<Result> result;
+// class PostList {
+//   int code;
+//   String msg;
+//   List<Result> result;
 
-  PostList({
-    required this.code,
-    required this.msg,
-    required this.result,
-  });
+//   PostList({
+//     required this.code,
+//     required this.msg,
+//     required this.result,
+//   });
 
-  factory PostList.fromJson(Map<String, dynamic> json) {
-    // print('!!!!!!!!!!!!!!!!!!!!!!!!!!!api!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-    // var rlt = json["result"];
-    // print(rlt);
-    return PostList(
-      code: json["code"],
-      msg: json["msg"],
-      result: List<Result>.from(json["result"].map((x) => Result.fromJson(x))),
-    );
-  }
+//   factory PostList.fromJson(Map<String, dynamic> json) {
+//     // print('!!!!!!!!!!!!!!!!!!!!!!!!!!!api!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
+//     // var rlt = json["result"];
+//     // print(rlt);
+//     return PostList(
+//       code: json["code"],
+//       msg: json["msg"],
+//       result: List<Result>.from(json["result"].map((x) => Result.fromJson(x))),
+//     );
+//   }
 
-  Map<String, dynamic> toJson() => {
-        "code": code,
-        "msg": msg,
-        "result": List<dynamic>.from(result.map((x) => x.toJson())),
-      };
-}
+//   Map<String, dynamic> toJson() => {
+//         "code": code,
+//         "msg": msg,
+//         "result": List<dynamic>.from(result.map((x) => x.toJson())),
+//       };
+// }
 
 class Result {
   int videoId;
@@ -130,22 +130,22 @@ class Result {
       };
 }
 
-// enum TeacherEnName { HULK }
+enum TeacherEnName { HULK }
 
-// final teacherEnNameValues = EnumValues({"Hulk": TeacherEnName.HULK});
+final teacherEnNameValues = EnumValues({"Hulk": TeacherEnName.HULK});
 
-// enum TeacherName { EMPTY }
+enum TeacherName { EMPTY }
 
-// final teacherNameValues = EnumValues({"浩克": TeacherName.EMPTY});
+final teacherNameValues = EnumValues({"浩克": TeacherName.EMPTY});
 
-// class EnumValues<T> {
-//   Map<String, T> map;
-//   late Map<T, String> reverseMap;
+class EnumValues<T> {
+  Map<String, T> map;
+  late Map<T, String> reverseMap;
 
-//   EnumValues(this.map);
+  EnumValues(this.map);
 
-//   Map<T, String> get reverse {
-//     reverseMap = map.map((k, v) => MapEntry(v, k));
-//     return reverseMap;
-//   }
-// }
+  Map<T, String> get reverse {
+    reverseMap = map.map((k, v) => MapEntry(v, k));
+    return reverseMap;
+  }
+}
