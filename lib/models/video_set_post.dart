@@ -40,27 +40,27 @@ class Result {
   int id;
   String title;
 
-  Result({
-    required this.startTime,
-    required this.endTime,
-    required this.actionId,
-    required this.id,
-    required this.title,
-  });
+  // Result({
+  //   required this.startTime,
+  //   required this.endTime,
+  //   required this.actionId,
+  //   required this.id,
+  //   required this.title,
+  // });
 
-  // factory Result.fromJson(Map<String, dynamic> json) => Result(
-  //       startTime: json["start_time"],
-  //       endTime: json["end_time"],
-  //       actionId: json["action_id"],
-  //       id: json["id"],
-  //       title: json["title"],
-  //     );
+  factory Result.fromJson(Map<String, dynamic> json) => Result(
+        startTime: json["start_time"],
+        endTime: json["end_time"],
+        actionId: json["action_id"],
+        id: json["id"],
+        title: json["title"],
+      );
 
-  // Map<String, dynamic> toJson() => {
-  //       "start_time": startTime,
-  //       "end_time": endTime,
-  //       "action_id": actionId,
-  //       "id": id,
-  //       "title": title,
-  //     };
+  Map<String, dynamic> toJson() => {
+        "start_time": startTime,
+        "end_time": endTime,
+        "action_id": actionId,
+        "id": id,
+        "title": title,
+      };
 }
