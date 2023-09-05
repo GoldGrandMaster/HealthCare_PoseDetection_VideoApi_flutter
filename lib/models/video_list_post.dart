@@ -130,22 +130,22 @@ class Result {
       };
 }
 
-enum TeacherEnName { HULK }
+// enum TeacherEnName { HULK }
 
-final teacherEnNameValues = EnumValues({"Hulk": TeacherEnName.HULK});
+// final teacherEnNameValues = EnumValues({"Hulk": TeacherEnName.HULK});
 
-enum TeacherName { EMPTY }
+// enum TeacherName { EMPTY }
 
-final teacherNameValues = EnumValues({"浩克": TeacherName.EMPTY});
+// final teacherNameValues = EnumValues({"浩克": TeacherName.EMPTY});
 
-class EnumValues<T> {
-  Map<String, T> map;
-  late Map<T, String> reverseMap;
+// class EnumValues<T> {
+//   Map<String, T> map;
+//   late Map<T, String> reverseMap;
 
-  EnumValues(this.map);
+//   EnumValues(this.map);
 
-  Map<T, String> get reverse {
-    reverseMap = map.map((k, v) => MapEntry(v, k));
-    return reverseMap;
-  }
-}
+//   Map<T, String> get reverse {
+//     reverseMap = map.map((k, v) => MapEntry(v, k));
+//     return reverseMap;
+//   }
+// }
