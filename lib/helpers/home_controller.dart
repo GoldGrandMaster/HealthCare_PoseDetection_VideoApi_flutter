@@ -12,10 +12,10 @@ class HomeController extends GetxController {
   String? text;
   //TODO: Implement HomeController
 
-  // @override
-  // void onInit() {
-  //   super.onInit();
-  // }
+  @override
+  void onInit() {
+    super.onInit();
+  }
 
   @override
   void onReady() {
