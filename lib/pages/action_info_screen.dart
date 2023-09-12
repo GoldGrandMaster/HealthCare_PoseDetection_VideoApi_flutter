@@ -180,9 +180,9 @@ class _ActionInfoScreenState extends State<ActionInfoScreen> {
             ],
           ),
         ),
-        // replacement: const Center(
-        //   child: CircularProgressIndicator(),
-        // ),
+        replacement: const Center(
+          child: CircularProgressIndicator(),
+        ),
       ),
     );
   }
