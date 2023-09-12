@@ -18,16 +18,16 @@ class _ActionInfoScreenState extends State<ActionInfoScreen> {
   var isLoaded = false;
   var videoId;
 
-  @override
-  void initState() {
-    super.initState();
-    Future.microtask(() {
-      videoId = widget.videoId;
-      print("Received videoId: $videoId"); // Add this line to debug
-      // Fetch data using the videoId
-      getData();
-    });
-  }
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   Future.microtask(() {
+  //     videoId = widget.videoId;
+  //     print("Received videoId: $videoId"); // Add this line to debug
+  //     // Fetch data using the videoId
+  //     getData();
+  //   });
+  // }
 
   getData() async {
     print('Fetching Data...');
