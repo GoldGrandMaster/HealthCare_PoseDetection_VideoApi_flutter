@@ -30,11 +30,11 @@ class PostList {
     );
   }
 
-  Map<String, dynamic> toJson() => {
-        "code": code,
-        "msg": msg,
-        "result": List<dynamic>.from(result.map((x) => x.toJson())),
-      };
+  // Map<String, dynamic> toJson() => {
+  //       "code": code,
+  //       "msg": msg,
+  //       "result": List<dynamic>.from(result.map((x) => x.toJson())),
+  //     };
 }
 
 class Result {
