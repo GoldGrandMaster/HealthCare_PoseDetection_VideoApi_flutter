@@ -22,13 +22,13 @@ class Setting {
     }
   }
 
-  // ValueNotifier<Locale> initMobileLanguage(String defaultLanguage) {
-  //   SharedPreferences.getInstance().then((prefs) {
-  //     return new ValueNotifier(
-  //         Locale(prefs.get('language') ?? defaultLanguage, ''));
-  //   });
-  //   return new ValueNotifier(Locale(defaultLanguage ?? "en", ''));
-  // }
+  ValueNotifier<Locale> initMobileLanguage(String defaultLanguage) {
+    SharedPreferences.getInstance().then((prefs) {
+      return new ValueNotifier(
+          Locale(prefs.get('language') ?? defaultLanguage, ''));
+    });
+    return new ValueNotifier(Locale(defaultLanguage ?? "en", ''));
+  }
 
   Map toMap() {
     var map = new Map<String, dynamic>();
