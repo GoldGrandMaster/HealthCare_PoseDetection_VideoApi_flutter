@@ -21,18 +21,18 @@ dependencies:
   fl_chart: ^0.63.0
   flutter_launcher_icons: ^0.13.1
   get: ^4.6.5
-  image_picker: ^0.8.8
-  google_mlkit_commons: ^0.2.0
-  google_mlkit_image_labeling: ^0.4.0
+  image_picker: ^1.0.4
+  google_mlkit_commons: ^0.3.0
+  google_mlkit_image_labeling: any
   path_provider: ^2.0.15
-  google_mlkit_pose_detection: ^0.4.0
+  google_mlkit_pose_detection: any
   camera: any
   percent_indicator: ^4.2.3
   video_player: ^2.6.1
   chewie: ^1.5.0
 
 dev_dependencies:
-  flutter_lints: ^1.0.0
+  flutter_lints: ^2.0.3
   flutter_test:
     sdk: flutter
 
