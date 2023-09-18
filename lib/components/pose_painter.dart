@@ -43,16 +43,16 @@ class PosePainter extends CustomPainter {
   final InputImageRotation rotation;
 
   //Calcuate angle of 3 joint points
-  double calculateAngle(Offset p1, Offset p2, Offset p3) {
-    final vector.Vector2 v1 = vector.Vector2(p1.dx - p2.dx, p1.dy - p2.dy);
-    final vector.Vector2 v2 = vector.Vector2(p3.dx - p2.dx, p3.dy - p2.dy);
-    final double dotProduct = v1.dot(v2);
-    final double cosAngle = dotProduct / (v1.length * v2.length);
-    final double angle = acos(cosAngle);
-    double degrees = angle * 180 / pi; // Convert to degrees
-    if (degrees > 180.0) degrees = 360 - degrees;
-    return degrees;
-  }
+  // double calculateAngle(Offset p1, Offset p2, Offset p3) {
+  //   final vector.Vector2 v1 = vector.Vector2(p1.dx - p2.dx, p1.dy - p2.dy);
+  //   final vector.Vector2 v2 = vector.Vector2(p3.dx - p2.dx, p3.dy - p2.dy);
+  //   final double dotProduct = v1.dot(v2);
+  //   final double cosAngle = dotProduct / (v1.length * v2.length);
+  //   final double angle = acos(cosAngle);
+  //   double degrees = angle * 180 / pi; // Convert to degrees
+  //   if (degrees > 180.0) degrees = 360 - degrees;
+  //   return degrees;
+  // }
 
   @override
   void paint(Canvas canvas, Size size) {
