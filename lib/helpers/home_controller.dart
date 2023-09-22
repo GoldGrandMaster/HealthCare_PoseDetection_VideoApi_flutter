@@ -12,22 +12,22 @@ class HomeController extends GetxController {
   String? text;
   //TODO: Implement HomeController
 
-  // @override
-  // void onInit() {
-  //   super.onInit();
-  // }
+  @override
+  void onInit() {
+    super.onInit();
+  }
 
-  // @override
-  // void onReady() {
-  //   super.onReady();
-  // }
+  @override
+  void onReady() {
+    super.onReady();
+  }
 
-  // @override
-  // void onClose() {
-  //   _canProcess = false;
-  //   _poseDetector.close();
-  //   super.onClose();
-  // }
+  @override
+  void onClose() {
+    _canProcess = false;
+    _poseDetector.close();
+    super.onClose();
+  }
 
   Future<void> processImage(InputImage inputImage) async {
     if (!_canProcess) return;
