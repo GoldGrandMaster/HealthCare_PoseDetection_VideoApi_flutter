@@ -43,12 +43,12 @@ class App {
   }
 }
 
-class Colors {
-  Color mainColor(double opacity) {
-    try {
-      return Color(settingRepo.setting.value.mainColor.value);
-    } catch (e) {
-      return Color(4293943954);
-    }
-  }
-}
+// class Colors {
+//   Color mainColor(double opacity) {
+//     try {
+//       return Color(settingRepo.setting.value.mainColor.value);
+//     } catch (e) {
+//       return Color(4293943954);
+//     }
+//   }
+// }
